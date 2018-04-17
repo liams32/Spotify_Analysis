@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Homepage</title>
+  <title>Charts</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -10,15 +10,14 @@
 </head>
 
 
-<!--Create the Cover Page and Navigation bar-->
-<div id="cover_page">
- Main Page
+<div id="chart">
+   <embed type="image/svg+xml" src= {{ chart|safe }} />
 </div>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="homepage">Home</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="search">Search</a></li>
-</nav>
+
+<figure> 
+	<img src={{album_image}} alt="text for album caption" />
+	<figcaption> {{track_name}} by {{artist_name}} </figcaption>
+</figure>
+
+</body>
+</html>
