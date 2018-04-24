@@ -1,0 +1,1 @@
+world mean aggregation images
