@@ -30,9 +30,16 @@ def search():
 	if request.method == 'POST':
 		artist_name = request.form['Artist'] #request Artist name from search.html
 		track_name = request.form['Track'] #request Track name from search.html
-		searched_features = misc_functions.output_map(Artist = artist_name, Track = track_name) 
+		searched_results = misc_functions.output_map(Artist = artist_name, Track = track_name)
+		#searched_features = misc_functions.output_map(Artist = artist_name, Track = track_name)[0] 
 		album_image = misc_functions.output_album_image(Artist = artist_name, Track = track_name)
-		return(render_template('charts.html', chart = searched_features, album_image = album_image, artist_name = artist_name, track_name = track_name))
+		#score_0s = misc_functions.output_map(Artist = artist_name, Track = track_name)[1]
+		#score_1s = misc_functions.output_map(Artist = artist_name, Track = track_name)[2]
+
+		searched_features = searched_results[0]
+		score_0s = searched_results[1]
+		score_1s = searched_results[2]
+		return(render_template('charts.html', chart = searched_features, album_image = album_image, artist_name = artist_name, track_name = track_name, score_1 = score_1s, score_0 = score_0s))
 	html = render_template('search.html')
 	return(html)
 
