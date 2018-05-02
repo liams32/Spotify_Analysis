@@ -195,8 +195,8 @@ def output_map(Artist, Track):
 
 
 	worldmap_chart = World()
-	worldmap_chart.title = 'testing world map'
-	worldmap_chart.add('regions', region_dict)
+	worldmap_chart.title = 'World map'
+	worldmap_chart.add('Popular Countries', region_dict)
 	del region_dict['global'] 
 	map_output = worldmap_chart.render_data_uri()
 
