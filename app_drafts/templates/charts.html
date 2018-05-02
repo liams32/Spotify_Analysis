@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Charts</title>
@@ -7,19 +7,152 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
 </head>
 
+<body class="w3-light-grey">
 
-<div id="chart">
+
+
+
+<!--Create the Cover Page and Navigation bar-->
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="homepage">Home Page</a>
+    </div>
+    <div class="navbar-header">
+      <a class="navbar-brand" href="search">Search Bar</a>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+  <div class="w3-panel">
+    <h1><b>Spotify Song Success</b></h1>
+    </div>
+    
+     <div class="w3-row-padding">
+        <div class="w3-col m6">
+          <div class="w3-card-2 w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Enter a Song and Artist Name:</h6>
+              <form action="{{ url_for('search')}}" target = "_self" method ="POST">
+              Artist Name: <input type="text" name="Artist" value="Grouplove"><br>
+              Track Name: <input type="text" name="Track" value="Spun"><br>
+              <br>
+              <input type="submit" value="Run Analytics" class = "w3-green">
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<!-- Album Cover and Title -->
+
+<header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> Song Title, Artist</b></h5>
+ </header>
+
+
+<div class="w3-panel">
+    <div class="w3-row-padding" style="margin:0 -16px" id="map">
+		<div class="w3-half">
+			<figure> 
+				<img src={{album_image}} alt="text for album caption" width: "200"; height: "200"/>
+				<!-- Album Cover and Title <figcaption> {{track_name}} by {{artist_name}} </figcaption>-->
+			</figure>
+		</div>
+
+		<div class="w3-third w3-container w3-black w3-padding-32">
+    		
+      			<div class="w3-container" style = "height: 270px; width: 100%;">
+        			<h5 class="w3-bottombar w3-border-green">Artist Stats</h5>
+        			<br>
+		              <p>Artist Name:</p>
+		              <br>
+		              <p>{{artist_name}}</p>
+		              <br>
+		              <p>Track Name:</p>
+		              <br>
+		              <p>{{track_name}}</p>
+      			</div>
+    		
+  		</div>
+
+	</div>
+</div>
+
+
+<!-- Chart Map of the World -->
+
+<header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> Country Analytics </b></h5>
+ </header>
+
+
+<div id="chart" style = "height: 100px; width: 90%;">
    <embed type="image/svg+xml" src= {{ chart|safe }} />
 </div>
 
-<figure> 
-	<img src={{album_image}} alt="text for album caption" />
-	<figcaption> {{track_name}} by {{artist_name}} </figcaption>
-	<figcaption> {{score_0}} </figcaption>
-	<figcaption> {{score_1}} </figcaption>
-</figure>
+<!-- HUGE line break -->
+
+<hr style="height:460pt; visibility:hidden;" />
+
+
+
+  <!-- Header -->
+
+  <div class="w3-panel">
+    <div class="w3-row-padding" style="margin:0 -16px" id="map">
+      <div class="w3-half">
+        <h5>List of Countries</h5>
+          <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+            <tr>
+              <td align="center">Successful Countries</td>
+            </tr>
+            <tr>
+              <td align= "center"> {{score_1}} </td>
+            </tr>
+            <tr>
+              <td align="center">Unsuccessful Countries</td>
+            </tr>
+            <tr>
+              <td align="center"> {{score_0}}  </td>
+            </tr>
+          </table>
+          <br>
+   
+      </div>
+    </div>
+  </div>
+  <hr>
+  <hr>
+    
+  <br>
+  
+
+  
+
+  <!-- End page content -->
+</div>
+
+
+
+
+
+
 
 </body>
 </html>
